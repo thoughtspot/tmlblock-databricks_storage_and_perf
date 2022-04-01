@@ -1,0 +1,506 @@
+guid: c1048aca-d869-4ae2-ae54-9a55dab377bd
+pinboard:
+  name: Databricks Billing Consumption
+  description: "Databricks Unit (DBU), which is a unit of processing capability per hour, billed on per-second usage. \n\nCost is estimated on a linear cost estimate per DBU based on standard cost-per-DBU pricing for your tier for each type of usage. Actual cost varies depending on your exact contract. Adjust cost-per-DBU for each SKU to change the cost estimate using the Pricing."
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Growth of Total Dbus by Monthly Billing Timestamp
+      tables:
+      - id: Usage History Databricks
+        name: Usage History Databricks
+      search_query: "growth of [Dbus] by [Billing Timestamp] [Billing Timestamp].monthly [Billing Timestamp].'last 11 months' [Billing Timestamp].'this month'"
+      answer_columns:
+      - name: Month(Billing Timestamp)
+      - name: Growth of Total Dbus
+      table:
+        table_columns:
+        - column_id: Month(Billing Timestamp)
+          headline_aggregation: MIN-MAX
+        - column_id: Growth of Total Dbus
+          headline_aggregation: MIN
+        ordered_column_ids:
+        - Month(Billing Timestamp)
+        - Growth of Total Dbus
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true}"
+      chart:
+        type: WATERFALL
+        chart_columns:
+        - column_id: Month(Billing Timestamp)
+        - column_id: Growth of Total Dbus
+        axis_configs:
+        - x:
+          - Month(Billing Timestamp)
+          "y":
+          - Growth of Total Dbus
+        client_state: "{\"multiColorSeriesColors\":[],\"systemMultiColorSeriesColors\":[],\"seriesColors\":[],\"chartProperties\":{\"gridLines\":{\"yGridlineEnabled\":true},\"showRoundedNumbers\":true,\"chartSpecific\":{},\"responsiveLayoutPreference\":\"AUTO_ON\"},\"axisProperties\":[{\"id\":\"009f1586-3bbb-4779-b7b1-8050fff92c68\",\"properties\":{\"linkedColumns\":[\"Growth of Total Dbus\"],\"axisType\":\"Y\",\"isOpposite\":false}},{\"id\":\"3150a50b-c2f3-45b7-8f98-7f36ccb0251d\",\"properties\":{\"linkedColumns\":[\"Month(Billing Timestamp)\"],\"axisType\":\"X\"}}],\"systemSeriesColors\":[{\"serieName\":\"Growth of Total Dbus\",\"color\":\"#2E75F0\"}],\"version\":\"V4DOT1\",\"columnProperties\":[{\"columnId\":\"Month(Billing Timestamp)\",\"columnProperty\":{}},{\"columnId\":\"Growth of Total Dbus\",\"columnProperty\":{}},{\"columnId\":\"9b2a9938-e548-3b61-9ce6-a3b9c2020f79\",\"columnProperty\":{}}]}"
+        client_state_v2: "{\"version\": \"V4DOT1\",\"chartProperties\": {\"gridLines\": {\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {}},\"axisProperties\": [{\"id\": \"009f1586-3bbb-4779-b7b1-8050fff92c68\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of Total Dbus\"],\"isOpposite\": false}},{\"id\": \"3150a50b-c2f3-45b7-8f98-7f36ccb0251d\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Billing Timestamp)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Growth of Total Dbus\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+      client_state: "{\"version\":\"V2\"}"
+  - id: Viz_2
+    answer:
+      name: "Total Dbus, Credits Used Cumulative by Monthly Billing Timestamp"
+      tables:
+      - id: Usage History Databricks
+        name: Usage History Databricks
+      formulas:
+      - id: Credits Used Cumulative
+        name: Credits Used Cumulative
+        expr: "cumulative_sum ( [Dbus] , 12 , 0 , [Billing Timestamp] )"
+      search_query: "[Dbus] [Billing Timestamp].monthly [Credits Used Cumulative]"
+      answer_columns:
+      - name: Month(Billing Timestamp)
+      - name: Credits Used Cumulative
+      - name: Total Dbus
+      table:
+        table_columns:
+        - column_id: Month(Billing Timestamp)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Dbus
+          headline_aggregation: SUM
+        - column_id: Credits Used Cumulative
+          headline_aggregation: MIN
+        ordered_column_ids:
+        - Month(Billing Timestamp)
+        - Total Dbus
+        - Credits Used Cumulative
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true}"
+      chart:
+        type: AREA
+        chart_columns:
+        - column_id: Month(Billing Timestamp)
+        - column_id: Total Dbus
+        - column_id: Credits Used Cumulative
+        axis_configs:
+        - x:
+          - Month(Billing Timestamp)
+          "y":
+          - Total Dbus
+          - Credits Used Cumulative
+        client_state: "{\"multiColorSeriesColors\":[],\"seriesColors\":[{\"serieName\":\"Credits Used Cumulative\",\"color\":\"#abc7f9\"},{\"serieName\":\"Total Dbus\",\"color\":\"#71a1f4\"}],\"chartProperties\":{\"gridLines\":{\"yGridlineEnabled\":false},\"showRoundedNumbers\":true,\"responsiveLayoutPreference\":\"AUTO_ON\",\"chartSpecific\":{}},\"axisProperties\":[{\"id\":\"8c6dc7af-3c88-4f4e-bbfd-798bf47f386d\",\"properties\":{\"linkedColumns\":[\"Total Dbus\"],\"axisType\":\"Y\",\"isOpposite\":false}},{\"id\":\"101032b4-3855-4e42-ae0b-0a0c54f170ef\",\"properties\":{\"linkedColumns\":[\"Credits Used Cumulative\"],\"axisType\":\"Y\",\"isOpposite\":true}},{\"id\":\"384132fc-d0fc-47f7-b41a-760d642f104e\",\"properties\":{\"linkedColumns\":[\"Month(Billing Timestamp)\"],\"axisType\":\"X\"}}],\"systemSeriesColors\":[{\"serieName\":\"Total Dbus\",\"color\":\"#48D1E0\"},{\"serieName\":\"Credits Used Cumulative\",\"color\":\"#2E75F0\"}],\"version\":\"V4DOT1\",\"columnProperties\":[{\"columnId\":\"946f0ce7-099c-45db-8f7e-50ae7241f230\",\"columnProperty\":{}},{\"columnId\":\"42b096d4-f6bf-4b33-8333-b1f892df32cf\",\"columnProperty\":{}},{\"columnId\":\"9b2a9938-e548-3b61-9ce6-a3b9c2020f79\",\"columnProperty\":{}},{\"columnId\":\"Total Dbus\",\"columnProperty\":{\"dataLabels\":true}}]}"
+        client_state_v2: "{\"version\": \"V4DOT1\",\"chartProperties\": {\"gridLines\": {\"yGridlineEnabled\": false},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {}},\"columnProperties\": [{\"columnId\": \"Total Dbus\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"8c6dc7af-3c88-4f4e-bbfd-798bf47f386d\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Dbus\"],\"isOpposite\": false}},{\"id\": \"101032b4-3855-4e42-ae0b-0a0c54f170ef\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Credits Used Cumulative\"],\"isOpposite\": true}},{\"id\": \"384132fc-d0fc-47f7-b41a-760d642f104e\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Billing Timestamp)\"]}}],\"seriesColors\": [{\"serieName\": \"Credits Used Cumulative\",\"color\": \"#abc7f9\"},{\"serieName\": \"Total Dbus\",\"color\": \"#71a1f4\"}],\"systemSeriesColors\": [{\"serieName\": \"Total Dbus\",\"color\": \"#48D1E0\"},{\"serieName\": \"Credits Used Cumulative\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+      client_state: "{\"version\":\"V2\"}"
+  - id: Viz_3
+    answer:
+      name: Total Dbus by Monthly Billing Timestamp and Sku Category
+      tables:
+      - id: Usage History Databricks
+        name: Usage History Databricks
+      formulas:
+      - id: Credits Used Cumulative
+        name: Credits Used Cumulative
+        expr: "cumulative_sum ( [Dbus] , 12 , 0 , [Billing Timestamp] )"
+      search_query: "[Dbus] [Billing Timestamp].monthly [Sku Category]"
+      answer_columns:
+      - name: Total Dbus
+      - name: Month(Billing Timestamp)
+      - name: Sku Category
+      table:
+        table_columns:
+        - column_id: Month(Billing Timestamp)
+          headline_aggregation: MIN-MAX
+        - column_id: Sku Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Dbus
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Month(Billing Timestamp)
+        - Sku Category
+        - Total Dbus
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true}"
+      chart:
+        type: STACKED_AREA
+        chart_columns:
+        - column_id: Month(Billing Timestamp)
+        - column_id: Sku Category
+        - column_id: Total Dbus
+        axis_configs:
+        - x:
+          - Month(Billing Timestamp)
+          "y":
+          - Total Dbus
+          color:
+          - Sku Category
+        client_state: "{\"multiColorSeriesColors\":[],\"seriesColors\":[{\"serieName\":\"b67ae1d8-d742-4853-b147-94f94d8b9a2d\",\"color\":\"#abc7f9\"},{\"serieName\":\"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"color\":\"#71a1f4\"}],\"chartProperties\":{\"gridLines\":{\"yGridlineEnabled\":true},\"showRoundedNumbers\":true,\"responsiveLayoutPreference\":\"AUTO_ON\",\"chartSpecific\":{},\"allLabels\":false,\"showStackedLabels\":true},\"axisProperties\":[{\"id\":\"a7054056-e199-4f55-bb54-9778859f5271\",\"properties\":{\"linkedColumns\":[\"Total Dbus\"],\"axisType\":\"Y\",\"isOpposite\":false}},{\"id\":\"411b7c61-7857-42f5-a6ef-bc015ca1f841\",\"properties\":{\"linkedColumns\":[\"Month(Billing Timestamp)\"],\"axisType\":\"X\"}}],\"systemSeriesColors\":[{\"serieName\":\"all purpose compute\",\"color\":\"#48D1E0\"},{\"serieName\":\"sql compute\",\"color\":\"#2E75F0\"}],\"version\":\"V4DOT1\",\"columnProperties\":[{\"columnId\":\"946f0ce7-099c-45db-8f7e-50ae7241f230\",\"columnProperty\":{}},{\"columnId\":\"42b096d4-f6bf-4b33-8333-b1f892df32cf\",\"columnProperty\":{}},{\"columnId\":\"9b2a9938-e548-3b61-9ce6-a3b9c2020f79\",\"columnProperty\":{}},{\"columnId\":\"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"columnProperty\":{\"dataLabels\":true}},{\"columnId\":\"Total Dbus\",\"columnProperty\":{\"dataLabels\":false}}]}"
+        client_state_v2: "{\"version\": \"V4DOT1\",\"chartProperties\": {\"gridLines\": {\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {},\"showStackedLabels\": true,\"allLabels\": false},\"columnProperties\": [{\"columnId\": \"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Total Dbus\",\"columnProperty\": {\"dataLabels\": false}}],\"axisProperties\": [{\"id\": \"a7054056-e199-4f55-bb54-9778859f5271\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Dbus\"],\"isOpposite\": false}},{\"id\": \"411b7c61-7857-42f5-a6ef-bc015ca1f841\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Billing Timestamp)\"]}}],\"seriesColors\": [{\"serieName\": \"b67ae1d8-d742-4853-b147-94f94d8b9a2d\",\"color\": \"#abc7f9\"},{\"serieName\": \"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"color\": \"#71a1f4\"}],\"systemSeriesColors\": [{\"serieName\": \"all purpose compute\",\"color\": \"#48D1E0\"},{\"serieName\": \"sql compute\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+      client_state: "{\"version\":\"V2\"}"
+  - id: Viz_4
+    answer:
+      name: Total Machine Hours by Day of week
+      tables:
+      - id: Usage History Databricks
+        name: Usage History Databricks
+      search_query: "[Machine Hours] [Billing Timestamp].'day of week'"
+      answer_columns:
+      - name: Total Machine Hours
+      - name: Day of Week(Billing Timestamp)
+      table:
+        table_columns:
+        - column_id: Day of Week(Billing Timestamp)
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Machine Hours
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Day of Week(Billing Timestamp)
+        - Total Machine Hours
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true}"
+      chart:
+        type: AREA
+        chart_columns:
+        - column_id: Day of Week(Billing Timestamp)
+        - column_id: Total Machine Hours
+        axis_configs:
+        - x:
+          - Day of Week(Billing Timestamp)
+          "y":
+          - Total Machine Hours
+        client_state: "{\"multiColorSeriesColors\":[],\"seriesColors\":[{\"serieName\":\"b67ae1d8-d742-4853-b147-94f94d8b9a2d\",\"color\":\"#abc7f9\"},{\"serieName\":\"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"color\":\"#71a1f4\"},{\"serieName\":\"Total Machine Hours\",\"color\":\"#bec6d0\"}],\"chartProperties\":{\"gridLines\":{\"yGridlineEnabled\":true},\"allLabels\":false,\"showStackedLabels\":true,\"showRoundedNumbers\":true,\"responsiveLayoutPreference\":\"AUTO_ON\",\"chartSpecific\":{}},\"axisProperties\":[{\"id\":\"71ce06ca-581a-4189-b84c-905a93232414\",\"properties\":{\"linkedColumns\":[\"Total Machine Hours\"],\"axisType\":\"Y\",\"isOpposite\":false}},{\"id\":\"fe785851-1b1d-458d-8776-5c66d5b0aa28\",\"properties\":{\"linkedColumns\":[\"Day of Week(Billing Timestamp)\"],\"axisType\":\"X\"}}],\"systemSeriesColors\":[{\"serieName\":\"Total Machine Hours\",\"color\":\"#2E75F0\"}],\"version\":\"V4DOT1\",\"columnProperties\":[{\"columnId\":\"946f0ce7-099c-45db-8f7e-50ae7241f230\",\"columnProperty\":{}},{\"columnId\":\"42b096d4-f6bf-4b33-8333-b1f892df32cf\",\"columnProperty\":{}},{\"columnId\":\"9b2a9938-e548-3b61-9ce6-a3b9c2020f79\",\"columnProperty\":{}},{\"columnId\":\"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"columnProperty\":{\"dataLabels\":true}},{\"columnId\":\"49a7545e-9945-470f-814c-b69f4ce40bdb\",\"columnProperty\":{\"dataLabels\":false}}]}"
+        client_state_v2: "{\"version\": \"V4DOT1\",\"chartProperties\": {\"gridLines\": {\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {},\"showStackedLabels\": true,\"allLabels\": false},\"columnProperties\": [{\"columnId\": \"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"49a7545e-9945-470f-814c-b69f4ce40bdb\",\"columnProperty\": {\"dataLabels\": false}}],\"axisProperties\": [{\"id\": \"71ce06ca-581a-4189-b84c-905a93232414\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Machine Hours\"],\"isOpposite\": false}},{\"id\": \"fe785851-1b1d-458d-8776-5c66d5b0aa28\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day of Week(Billing Timestamp)\"]}}],\"seriesColors\": [{\"serieName\": \"b67ae1d8-d742-4853-b147-94f94d8b9a2d\",\"color\": \"#abc7f9\"},{\"serieName\": \"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"color\": \"#71a1f4\"},{\"serieName\": \"Total Machine Hours\",\"color\": \"#bec6d0\"}],\"systemSeriesColors\": [{\"serieName\": \"Total Machine Hours\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+      client_state: "{\"version\":\"V2\"}"
+  - id: Viz_5
+    answer:
+      name: Total Machine Hours by Hour of day
+      tables:
+      - id: Usage History Databricks
+        name: Usage History Databricks
+      search_query: "[Machine Hours] [Billing Timestamp].'hour of day'"
+      answer_columns:
+      - name: Total Machine Hours
+      - name: HOUR_OF_DAY(Billing Timestamp)
+      table:
+        table_columns:
+        - column_id: HOUR_OF_DAY(Billing Timestamp)
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Machine Hours
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - HOUR_OF_DAY(Billing Timestamp)
+        - Total Machine Hours
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true}"
+      chart:
+        type: AREA
+        chart_columns:
+        - column_id: HOUR_OF_DAY(Billing Timestamp)
+        - column_id: Total Machine Hours
+        axis_configs:
+        - x:
+          - HOUR_OF_DAY(Billing Timestamp)
+          "y":
+          - Total Machine Hours
+        client_state: "{\"multiColorSeriesColors\":[],\"seriesColors\":[{\"serieName\":\"b67ae1d8-d742-4853-b147-94f94d8b9a2d\",\"color\":\"#abc7f9\"},{\"serieName\":\"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"color\":\"#71a1f4\"},{\"serieName\":\"Total Machine Hours\",\"color\":\"#bec6d0\"}],\"chartProperties\":{\"gridLines\":{\"yGridlineEnabled\":true},\"allLabels\":false,\"showStackedLabels\":true,\"showRoundedNumbers\":true,\"responsiveLayoutPreference\":\"AUTO_ON\",\"chartSpecific\":{}},\"axisProperties\":[{\"id\":\"c991bf8e-fd84-4c9a-8ca8-c24af1223339\",\"properties\":{\"linkedColumns\":[\"Total Machine Hours\"],\"axisType\":\"Y\",\"isOpposite\":false}},{\"id\":\"76592a56-f63b-4c0b-bd3d-5c7a5e81ed0c\",\"properties\":{\"linkedColumns\":[\"HOUR_OF_DAY(Billing Timestamp)\"],\"axisType\":\"X\"}}],\"version\":\"V4DOT1\",\"columnProperties\":[{\"columnId\":\"946f0ce7-099c-45db-8f7e-50ae7241f230\",\"columnProperty\":{}},{\"columnId\":\"42b096d4-f6bf-4b33-8333-b1f892df32cf\",\"columnProperty\":{}},{\"columnId\":\"9b2a9938-e548-3b61-9ce6-a3b9c2020f79\",\"columnProperty\":{}},{\"columnId\":\"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"columnProperty\":{\"dataLabels\":true}},{\"columnId\":\"49a7545e-9945-470f-814c-b69f4ce40bdb\",\"columnProperty\":{\"dataLabels\":false}}]}"
+        client_state_v2: "{\"version\": \"V4DOT1\",\"chartProperties\": {\"gridLines\": {\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {},\"showStackedLabels\": true,\"allLabels\": false},\"columnProperties\": [{\"columnId\": \"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"49a7545e-9945-470f-814c-b69f4ce40bdb\",\"columnProperty\": {\"dataLabels\": false}}],\"axisProperties\": [{\"id\": \"c991bf8e-fd84-4c9a-8ca8-c24af1223339\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Machine Hours\"],\"isOpposite\": false}},{\"id\": \"76592a56-f63b-4c0b-bd3d-5c7a5e81ed0c\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"HOUR_OF_DAY(Billing Timestamp)\"]}}],\"seriesColors\": [{\"serieName\": \"b67ae1d8-d742-4853-b147-94f94d8b9a2d\",\"color\": \"#abc7f9\"},{\"serieName\": \"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"color\": \"#71a1f4\"},{\"serieName\": \"Total Machine Hours\",\"color\": \"#bec6d0\"}]}"
+      display_mode: CHART_MODE
+      client_state: "{\"version\":\"V2\"}"
+  - id: Viz_6
+    answer:
+      name: Dbus by Cluster Node Type and Cluster Name
+      tables:
+      - id: Usage History Databricks
+        name: Usage History Databricks
+      search_query: "[Dbus] [Cluster Node Type] [Cluster Name]"
+      answer_columns:
+      - name: Total Dbus
+      - name: Cluster Node Type
+      - name: Cluster Name
+      table:
+        table_columns:
+        - column_id: Cluster Node Type
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Cluster Name
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Dbus
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Cluster Node Type
+        - Cluster Name
+        - Total Dbus
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true}"
+      chart:
+        type: HEATMAP
+        chart_columns:
+        - column_id: Cluster Node Type
+        - column_id: Cluster Name
+        - column_id: Total Dbus
+        axis_configs:
+        - x:
+          - Cluster Name
+          "y":
+          - Cluster Node Type
+          size: Total Dbus
+        client_state: "{\"multiColorSeriesColors\":[],\"seriesColors\":[{\"serieName\":\"b67ae1d8-d742-4853-b147-94f94d8b9a2d\",\"color\":\"#abc7f9\"},{\"serieName\":\"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"color\":\"#71a1f4\"},{\"serieName\":\"3f7891d7-9e4e-4582-9d9d-ee2b88c170fe\",\"color\":\"#bec6d0\"}],\"chartProperties\":{\"gridLines\":{\"yGridlineEnabled\":true},\"allLabels\":false,\"showStackedLabels\":true,\"showRoundedNumbers\":true,\"responsiveLayoutPreference\":\"AUTO_ON\",\"chartSpecific\":{\"pivotState\":{\"columnExpandedPaths\":[],\"rowExpandedPaths\":[]}}},\"axisProperties\":[{\"id\":\"098cfc41-ee1b-4260-892f-053b5574a1d0\",\"properties\":{\"linkedColumns\":[\"Cluster Node Type\"],\"axisType\":\"Y\",\"isOpposite\":false}},{\"id\":\"dcb3e1f1-b292-46af-ac4c-faabf7290bef\",\"properties\":{\"linkedColumns\":[\"Cluster Name\"],\"axisType\":\"X\"}}],\"systemSeriesColors\":[{\"serieName\":\"{null}\",\"color\":\"#06BF7F\"},{\"serieName\":\"hc cluster\",\"color\":\"#FCD977\"},{\"serieName\":\"sqlviews\",\"color\":\"#FCC838\"},{\"serieName\":\"spotapps\",\"color\":\"#82DFE9\"},{\"serieName\":\"test\",\"color\":\"#48D1E0\"},{\"serieName\":\"test1\",\"color\":\"#71A1F4\"},{\"serieName\":\"testfrench\",\"color\":\"#2E75F0\"},{\"serieName\":\"1cbf4443-63b8-42e8-a443-7db492952615\",\"color\":\"#2E75F0\"},{\"serieName\":\"{null}, db.large\",\"color\":\"#B094F8\"},{\"serieName\":\"{null}, db.medium\",\"color\":\"#8C62F5\"},{\"serieName\":\"{null}, db.small\",\"color\":\"#56D3A8\"},{\"serieName\":\"{null}, db.xsmall\",\"color\":\"#06BF7F\"},{\"serieName\":\"{null}, db.xxsmall\",\"color\":\"#FCD977\"},{\"serieName\":\"hc cluster, i3.2xlarge\",\"color\":\"#FCC838\"},{\"serieName\":\"sqlviews, r4.xlarge\",\"color\":\"#82DFE9\"},{\"serieName\":\"spotapps, i3.xlarge\",\"color\":\"#48D1E0\"},{\"serieName\":\"test, i3.xlarge\",\"color\":\"#2359B6\"},{\"serieName\":\"test1, i3.xlarge\",\"color\":\"#71A1F4\"},{\"serieName\":\"testfrench, i3.xlarge\",\"color\":\"#2E75F0\"},{\"serieName\":\"Cluster Node Type\",\"color\":\"#2E75F0\"}],\"version\":\"V4DOT1\",\"columnProperties\":[{\"columnId\":\"946f0ce7-099c-45db-8f7e-50ae7241f230\",\"columnProperty\":{}},{\"columnId\":\"42b096d4-f6bf-4b33-8333-b1f892df32cf\",\"columnProperty\":{}},{\"columnId\":\"9b2a9938-e548-3b61-9ce6-a3b9c2020f79\",\"columnProperty\":{}},{\"columnId\":\"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"columnProperty\":{\"dataLabels\":true}},{\"columnId\":\"49a7545e-9945-470f-814c-b69f4ce40bdb\",\"columnProperty\":{\"dataLabels\":false}}]}"
+        client_state_v2: "{\"version\": \"V4DOT1\",\"chartProperties\": {\"gridLines\": {\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotState\": {}},\"showStackedLabels\": true,\"allLabels\": false},\"columnProperties\": [{\"columnId\": \"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"49a7545e-9945-470f-814c-b69f4ce40bdb\",\"columnProperty\": {\"dataLabels\": false}}],\"axisProperties\": [{\"id\": \"098cfc41-ee1b-4260-892f-053b5574a1d0\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Cluster Node Type\"],\"isOpposite\": false}},{\"id\": \"dcb3e1f1-b292-46af-ac4c-faabf7290bef\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Cluster Name\"]}}],\"seriesColors\": [{\"serieName\": \"b67ae1d8-d742-4853-b147-94f94d8b9a2d\",\"color\": \"#abc7f9\"},{\"serieName\": \"4bbf07a8-a451-4953-bc30-8cfb10345cfe\",\"color\": \"#71a1f4\"},{\"serieName\": \"3f7891d7-9e4e-4582-9d9d-ee2b88c170fe\",\"color\": \"#bec6d0\"}],\"systemSeriesColors\": [{\"serieName\": \"{null}\",\"color\": \"#06BF7F\"},{\"serieName\": \"hc cluster\",\"color\": \"#FCD977\"},{\"serieName\": \"sqlviews\",\"color\": \"#FCC838\"},{\"serieName\": \"spotapps\",\"color\": \"#82DFE9\"},{\"serieName\": \"test\",\"color\": \"#48D1E0\"},{\"serieName\": \"test1\",\"color\": \"#71A1F4\"},{\"serieName\": \"testfrench\",\"color\": \"#2E75F0\"},{\"serieName\": \"1cbf4443-63b8-42e8-a443-7db492952615\",\"color\": \"#2E75F0\"},{\"serieName\": \"{null}, db.large\",\"color\": \"#B094F8\"},{\"serieName\": \"{null}, db.medium\",\"color\": \"#8C62F5\"},{\"serieName\": \"{null}, db.small\",\"color\": \"#56D3A8\"},{\"serieName\": \"{null}, db.xsmall\",\"color\": \"#06BF7F\"},{\"serieName\": \"{null}, db.xxsmall\",\"color\": \"#FCD977\"},{\"serieName\": \"hc cluster, i3.2xlarge\",\"color\": \"#FCC838\"},{\"serieName\": \"sqlviews, r4.xlarge\",\"color\": \"#82DFE9\"},{\"serieName\": \"spotapps, i3.xlarge\",\"color\": \"#48D1E0\"},{\"serieName\": \"test, i3.xlarge\",\"color\": \"#2359B6\"},{\"serieName\": \"test1, i3.xlarge\",\"color\": \"#71A1F4\"},{\"serieName\": \"testfrench, i3.xlarge\",\"color\": \"#2E75F0\"},{\"serieName\": \"Cluster Node Type\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+      client_state: "{\"version\":\"V2\"}"
+  - id: Viz_7
+    answer:
+      name: "Total Machine Hours, Total Dbus by Monthly Billing Timestamp"
+      tables:
+      - id: Usage History Databricks
+        name: Usage History Databricks
+      search_query: "[Billing Timestamp] [Billing Timestamp].monthly [Dbus] [Price]"
+      answer_columns:
+      - name: Total Dbus
+      - name: Month(Billing Timestamp)
+      - name: Total Price
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: AUD
+            unit: AUTO
+            decimals: 2.0
+            toSeparateThousands: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Month(Billing Timestamp)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Dbus
+          headline_aggregation: SUM
+        - column_id: Total Price
+          headline_aggregation: TABLE_AGGR
+        ordered_column_ids:
+        - Month(Billing Timestamp)
+        - Total Dbus
+        - Total Price
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Month(Billing Timestamp)
+        - column_id: Total Dbus
+        - column_id: Total Price
+        axis_configs:
+        - x:
+          - Month(Billing Timestamp)
+          "y":
+          - Total Dbus
+          - Total Price
+        client_state: "{\"multiColorSeriesColors\":[],\"seriesColors\":[{\"serieName\":\"bf2f74fb-24bf-4fee-852a-b83c8603eaec\",\"color\":\"#bec6d0\"},{\"serieName\":\"total dbus\",\"color\":\"#f47e89\"},{\"serieName\":\"Total Price\",\"color\":\"#f47e89\"},{\"serieName\":\"Total Dbus\",\"color\":\"#71a1f4\"}],\"chartProperties\":{\"gridLines\":{},\"showRoundedNumbers\":true,\"responsiveLayoutPreference\":\"AUTO_ON\",\"chartSpecific\":{}},\"axisProperties\":[{\"id\":\"670e716b-0c7f-48c1-b8f0-f2d6b969f4b5\",\"properties\":{\"linkedColumns\":[\"Total Dbus\"],\"axisType\":\"Y\",\"isOpposite\":true}},{\"id\":\"8c20155f-f023-49bc-bde4-f3365134dfb6\",\"properties\":{\"linkedColumns\":[\"Month(Billing Timestamp)\"],\"axisType\":\"X\"}},{\"id\":\"b2264a1c-da8d-4d0f-9667-a836e4eb0e1d\",\"properties\":{\"linkedColumns\":[\"Total Price\"],\"axisType\":\"Y\",\"isOpposite\":false}}],\"systemSeriesColors\":[{\"serieName\":\"Total Dbus\",\"color\":\"#48D1E0\"},{\"serieName\":\"Total Price\",\"color\":\"#FCC838\"}],\"version\":\"V4DOT1\",\"columnProperties\":[{\"columnId\":\"Month(Billing Timestamp)\",\"columnProperty\":{}},{\"columnId\":\"bf2f74fb-24bf-4fee-852a-b83c8603eaec\",\"columnProperty\":{}},{\"columnId\":\"Total Dbus\",\"columnProperty\":{\"dataLabels\":true}},{\"columnId\":\"Total Price\",\"columnProperty\":{\"dataLabels\":true}}]}"
+        client_state_v2: "{\"version\": \"V4DOT1\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {}},\"columnProperties\": [{\"columnId\": \"Total Dbus\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Total Price\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"670e716b-0c7f-48c1-b8f0-f2d6b969f4b5\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Dbus\"],\"isOpposite\": true}},{\"id\": \"8c20155f-f023-49bc-bde4-f3365134dfb6\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Billing Timestamp)\"]}},{\"id\": \"b2264a1c-da8d-4d0f-9667-a836e4eb0e1d\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Price\"],\"isOpposite\": false}}],\"seriesColors\": [{\"serieName\": \"bf2f74fb-24bf-4fee-852a-b83c8603eaec\",\"color\": \"#bec6d0\"},{\"serieName\": \"total dbus\",\"color\": \"#f47e89\"},{\"serieName\": \"Total Price\",\"color\": \"#f47e89\"},{\"serieName\": \"Total Dbus\",\"color\": \"#71a1f4\"}],\"systemSeriesColors\": [{\"serieName\": \"Total Dbus\",\"color\": \"#48D1E0\"},{\"serieName\": \"Total Price\",\"color\": \"#FCC838\"}]}"
+      display_mode: CHART_MODE
+      client_state: "{\"version\":\"V2\"}"
+  - id: Viz_8
+    answer:
+      name: Cluster Usage
+      tables:
+      - id: Usage History Databricks
+        name: Usage History Databricks
+      search_query: "[Cluster Id] [Cluster Name] [Cluster Node Type] [Dbus] [Machine Hours] [Sku Category] [Sku] [Price]"
+      answer_columns:
+      - name: Cluster Node Type
+      - name: Total Dbus
+      - name: Total Machine Hours
+      - name: Sku Category
+      - name: Sku
+      - name: Cluster Id
+      - name: Cluster Name
+      - name: Total Price
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: AUD
+            unit: AUTO
+            decimals: 2.0
+            toSeparateThousands: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Cluster Id
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Cluster Name
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Cluster Node Type
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Sku Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Sku
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Dbus
+          headline_aggregation: SUM
+        - column_id: Total Machine Hours
+          headline_aggregation: SUM
+        - column_id: Total Price
+          headline_aggregation: TABLE_AGGR
+        ordered_column_ids:
+        - Cluster Id
+        - Cluster Name
+        - Cluster Node Type
+        - Sku Category
+        - Sku
+        - Total Dbus
+        - Total Machine Hours
+        - Total Price
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true}"
+      chart:
+        type: PIVOT_TABLE
+        chart_columns:
+        - column_id: Cluster Id
+        - column_id: Cluster Name
+        - column_id: Cluster Node Type
+        - column_id: Sku Category
+        - column_id: Sku
+        - column_id: Total Dbus
+        - column_id: Total Machine Hours
+        - column_id: Total Price
+        axis_configs:
+        - x:
+          - Cluster Name
+          - Cluster Id
+          - Cluster Node Type
+          "y":
+          - Total Dbus
+          - Total Price
+          - Total Machine Hours
+          color:
+          - Sku Category
+          - Sku
+        - "y":
+          - Total Dbus
+          - Total Price
+          - Total Machine Hours
+        - x:
+          - Cluster Name
+          "y":
+          - Total Dbus
+          - Total Price
+          - Total Machine Hours
+        - "y":
+          - Total Dbus
+          - Total Price
+          - Total Machine Hours
+          color:
+          - Sku Category
+        - x:
+          - Cluster Name
+          "y":
+          - Total Dbus
+          - Total Price
+          - Total Machine Hours
+          color:
+          - Sku Category
+        client_state: "{\"multiColorSeriesColors\":[],\"systemMultiColorSeriesColors\":[],\"seriesColors\":[],\"chartProperties\":{\"gridLines\":{},\"showRoundedNumbers\":true,\"responsiveLayoutPreference\":\"AUTO_ON\",\"chartSpecific\":{\"pivotState\":{\"columnExpandedPaths\":[],\"rowExpandedPaths\":[]},\"isHeatmapOverlayed\":true}},\"axisProperties\":[{\"id\":\"8d869968-d512-4b65-8bf2-6058c953b6a1\",\"properties\":{\"linkedColumns\":[\"Total Dbus\"],\"axisType\":\"Y\",\"isOpposite\":false}},{\"id\":\"83204a0a-f0a1-49ed-b20b-f4552f5c7c21\",\"properties\":{\"linkedColumns\":[\"Cluster Name\",\"Cluster Node Type\",\"Cluster Id\"],\"axisType\":\"X\"}},{\"id\":\"198db201-0e2c-497c-b7e2-88f3c74309b3\",\"properties\":{\"linkedColumns\":[\"Total Machine Hours\"],\"axisType\":\"Y\",\"isOpposite\":true}},{\"id\":\"69d38a72-b753-47a9-a490-ef0b6c7c145e\",\"properties\":{\"linkedColumns\":[\"Total Price\"],\"axisType\":\"Y\",\"isOpposite\":true}}],\"systemSeriesColors\":[],\"version\":\"V4DOT1\",\"columnProperties\":[{\"columnId\":\"Cluster Id\",\"columnProperty\":{}},{\"columnId\":\"Cluster Name\",\"columnProperty\":{}},{\"columnId\":\"Cluster Node Type\",\"columnProperty\":{}},{\"columnId\":\"Sku Category\",\"columnProperty\":{}},{\"columnId\":\"Sku\",\"columnProperty\":{}},{\"columnId\":\"Total Dbus\",\"columnProperty\":{}},{\"columnId\":\"Total Machine Hours\",\"columnProperty\":{}}]}"
+        client_state_v2: "{\"version\": \"V4DOT1\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotState\": {},\"isHeatmapOverlayed\": true}},\"axisProperties\": [{\"id\": \"8d869968-d512-4b65-8bf2-6058c953b6a1\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Dbus\"],\"isOpposite\": false}},{\"id\": \"83204a0a-f0a1-49ed-b20b-f4552f5c7c21\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Cluster Name\",\"Cluster Node Type\",\"Cluster Id\"]}},{\"id\": \"198db201-0e2c-497c-b7e2-88f3c74309b3\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Machine Hours\"],\"isOpposite\": true}},{\"id\": \"69d38a72-b753-47a9-a490-ef0b6c7c145e\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Price\"],\"isOpposite\": true}}]}"
+      display_mode: CHART_MODE
+      client_state: "{\"version\":\"V2\"}"
+  - id: Viz_9
+    answer:
+      name: Total Price by Sku Category
+      tables:
+      - id: Usage History Databricks
+        name: Usage History Databricks
+      search_query: "[Price] [Sku Category]"
+      answer_columns:
+      - name: Total Price
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: AUD
+            unit: AUTO
+            decimals: 2.0
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: Sku Category
+      table:
+        table_columns:
+        - column_id: Sku Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Price
+          headline_aggregation: TABLE_AGGR
+        ordered_column_ids:
+        - Sku Category
+        - Total Price
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true}"
+      chart:
+        type: PIE
+        chart_columns:
+        - column_id: Sku Category
+        - column_id: Total Price
+        axis_configs:
+        - x:
+          - Sku Category
+          "y":
+          - Total Price
+        client_state: "{\"multiColorSeriesColors\":[],\"seriesColors\":[],\"chartProperties\":{\"gridLines\":{},\"allLabels\":true,\"showRoundedNumbers\":true,\"responsiveLayoutPreference\":\"AUTO_ON\",\"chartSpecific\":{}},\"axisProperties\":[{\"id\":\"61389a93-4868-46e9-8fa5-8fff3f20faaa\",\"properties\":{\"linkedColumns\":[\"Total Price\"],\"axisType\":\"Y\",\"isOpposite\":false}},{\"id\":\"ef5f69a2-1219-4ad9-8543-b3d0ac7263c6\",\"properties\":{\"linkedColumns\":[\"Sku Category\"],\"axisType\":\"X\"}}],\"systemSeriesColors\":[{\"serieName\":\"all purpose compute\",\"color\":\"#48D1E0\"},{\"serieName\":\"sql compute\",\"color\":\"#2E75F0\"}],\"version\":\"V4DOT1\",\"columnProperties\":[{\"columnId\":\"Sku Category\",\"columnProperty\":{}},{\"columnId\":\"2a9153e8-f2da-4355-b3be-d1d429d12947\",\"columnProperty\":{}},{\"columnId\":\"Total Price\",\"columnProperty\":{\"dataLabels\":true}}]}"
+        client_state_v2: "{\"version\": \"V4DOT1\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {},\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Total Price\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"61389a93-4868-46e9-8fa5-8fff3f20faaa\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Price\"],\"isOpposite\": false}},{\"id\": \"ef5f69a2-1219-4ad9-8543-b3d0ac7263c6\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Sku Category\"]}}],\"systemSeriesColors\": [{\"serieName\": \"all purpose compute\",\"color\": \"#48D1E0\"},{\"serieName\": \"sql compute\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+      client_state: "{\"version\":\"V2\"}"
+  - id: Viz_10
+    answer:
+      name: Total Dbus by Sku Category
+      tables:
+      - id: Usage History Databricks
+        name: Usage History Databricks
+      search_query: "[Sku Category] [Dbus]"
+      answer_columns:
+      - name: Sku Category
+      - name: Total Dbus
+      table:
+        table_columns:
+        - column_id: Sku Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Dbus
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Sku Category
+        - Total Dbus
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"wrapTableHeader\": true}"
+      chart:
+        type: PIE
+        chart_columns:
+        - column_id: Sku Category
+        - column_id: Total Dbus
+        axis_configs:
+        - x:
+          - Sku Category
+          "y":
+          - Total Dbus
+        client_state: "{\"multiColorSeriesColors\":[],\"seriesColors\":[],\"chartProperties\":{\"gridLines\":{},\"allLabels\":true,\"showRoundedNumbers\":true,\"responsiveLayoutPreference\":\"AUTO_ON\",\"chartSpecific\":{}},\"axisProperties\":[{\"id\":\"931ba38c-30a9-4118-a423-4e416be4f9a6\",\"properties\":{\"linkedColumns\":[\"Total Dbus\"],\"axisType\":\"Y\",\"isOpposite\":false}},{\"id\":\"dce3682a-7f2f-4cc0-b741-5cd7ffcf52e7\",\"properties\":{\"linkedColumns\":[\"Sku Category\"],\"axisType\":\"X\"}}],\"systemSeriesColors\":[{\"serieName\":\"Total Dbus\",\"color\":\"#2E75F0\"},{\"serieName\":\"all purpose compute\",\"color\":\"#48D1E0\"},{\"serieName\":\"sql compute\",\"color\":\"#2E75F0\"}],\"version\":\"V4DOT1\",\"columnProperties\":[{\"columnId\":\"Sku Category\",\"columnProperty\":{}},{\"columnId\":\"2a9153e8-f2da-4355-b3be-d1d429d12947\",\"columnProperty\":{}},{\"columnId\":\"1d280b65-8698-4f35-a386-a852efb1f603\",\"columnProperty\":{\"dataLabels\":true}},{\"columnId\":\"Total Dbus\",\"columnProperty\":{\"dataLabels\":true}}]}"
+        client_state_v2: "{\"version\": \"V4DOT1\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {},\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"1d280b65-8698-4f35-a386-a852efb1f603\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Total Dbus\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"931ba38c-30a9-4118-a423-4e416be4f9a6\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Dbus\"],\"isOpposite\": false}},{\"id\": \"dce3682a-7f2f-4cc0-b741-5cd7ffcf52e7\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Sku Category\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total Dbus\",\"color\": \"#2E75F0\"},{\"serieName\": \"all purpose compute\",\"color\": \"#48D1E0\"},{\"serieName\": \"sql compute\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+      client_state: "{\"version\":\"V2\"}"
+  filters:
+  - column:
+    - Year
+  - column:
+    - Quarter
+  - column:
+    - Month
+  - column:
+    - Cluster Name
+  - column:
+    - Sku Category
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+      size: MEDIUM
+    - visualization_id: Viz_2
+      size: MEDIUM_SMALL
+    - visualization_id: Viz_3
+      size: MEDIUM_SMALL
+    - visualization_id: Viz_6
+      size: MEDIUM
+    - visualization_id: Viz_10
+      size: MEDIUM_SMALL
+    - visualization_id: Viz_9
+      size: MEDIUM_SMALL
+    - visualization_id: Viz_7
+      size: LARGE
+    - visualization_id: Viz_5
+      size: LARGE_SMALL
+    - visualization_id: Viz_4
+      size: LARGE_SMALL
+    - visualization_id: Viz_8
+      size: LARGE
