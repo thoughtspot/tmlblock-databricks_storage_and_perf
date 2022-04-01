@@ -56,6 +56,25 @@ https://docs.databricks.com/administration-guide/account-settings/billable-usage
 Refer to the following link for path and query parameters.
 https://docs.databricks.com/dev-tools/api/latest/account.html#operation/download-billable-usage
 
+### Connect with Thoughtspot and Import TML
+- Log into your ThoughtSpot instance and create an Embrace connection to each the following tables.
+ - endpoints
+ - queries 
+ - billing
+ 
+- Combine all worksheet TML files into a ZIP file: 
+  - worksheet_Manifest.yaml
+  - Query History Databricks.worksheet.tml
+  - Usage History Databricks.worksheet.tml
+
+- Combine all worksheet TML files into a seperate ZIP file: 
+  - Pinboard_Manifest.yaml
+  - Databricks Billing Consumption.pinboard.tml
+  - Databricks Query Performance.pinboard.tml
+  - Databricks Query Volume.pinboard.tml
+ 
+- Import the zipped file containing TML for the worksheets and verify that it has all been imported without any errors.
+- Import the zipped file for the liveboards and verify that it has all been imported without any errors.
 
 # Liveboard Screenshots 
 
