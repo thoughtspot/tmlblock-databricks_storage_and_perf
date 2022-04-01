@@ -57,4 +57,11 @@ Refer to the following link for path and query parameters.
 https://docs.databricks.com/dev-tools/api/latest/account.html#operation/download-billable-usage
 
 
+# Liveboard Screenshots 
 
+### Databricks Query Volume 
+<img width="1000" alt="Screen Shot 2022-04-01 at 10 49 39 AM" src="https://user-images.githubusercontent.com/102629468/161316611-e8dde8be-cf3c-41cd-8c69-1f6c1b0cc03c.png">
+
+
+## Databricks Billing Consumption
+<img width="1000" alt="Screen Shot 2022-04-01 at 10 49 48 AM" src="https://user-images.githubusercontent.com/102629468/161316600-00dc640a-ae54-41ea-a155-9ac2c557eb4c.png">
