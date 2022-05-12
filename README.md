@@ -54,6 +54,32 @@ https://docs.databricks.com/administration-guide/account-settings/billable-usage
 Refer to the following link for path and query parameters.
 https://docs.databricks.com/dev-tools/api/latest/account.html#operation/download-billable-usage
 
+### Query History API
+List the history of queries through SQL endpoints. You can filter by user ID, endpoint ID, status, and time range.
+ 
+https://docs.databricks.com/sql/api/query-history.html
+ 
+***Requirements***
+Authentication is required to access this rest API.
+ 
+Example URL Path
+https://HOSTID.cloud.databricks.com/api/2.0/sql/history/queries?include_metrics=true
+ 
+### SQL Endpoints APIs
+This URL provides the name of each endpoint.
+ 
+https://docs.databricks.com/sql/api/sql-endpoints.html
+ 
+***Requirements***
+·   	Authentication is required to access this rest API.
+Example URL Path
+https://HOSTID.cloud.databricks.com/api/2.0/sql/endpoints
+ 
+ 
+ 
+
+
+
 ### Connect with Thoughtspot and Import TML
 - Log into your ThoughtSpot instance and create an Embrace connection to each the following tables.
   - endpoints
