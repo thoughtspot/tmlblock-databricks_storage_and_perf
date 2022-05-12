@@ -30,7 +30,7 @@ Prior to setting up the SpotApp a data pipeline must create the tables that will
 
 ## Databricks Workspace Archive
 
-An example Databricks workspace archive is available as a reference (SpotApp_Databricks_Python_API_Fetch.zip). This includes example python code to query the identified endpoint APIs and create the delta tables. Within the Data Science and Engineering platform this workspace can be scheduled as a reoccurring job. 
+An example Databricks workspace archive is available as a reference (SpotApp_Databricks_Python_API_Fetch). This includes example python code to query the identified endpoint APIs and create the delta tables. Within the Data Science and Engineering platform this workspace can be scheduled as a reoccurring job. 
 
 Within the constraints section in the example python code, a number of constants must be set. **Search for the string UPDATE to identify these.**
 
