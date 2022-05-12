@@ -80,7 +80,7 @@ https://HOSTID.cloud.databricks.com/api/2.0/sql/endpoints
 
 
 
-### Connect with Thoughtspot and Import TML
+## Connect with Thoughtspot and Import TML
 - Log into your ThoughtSpot instance and create an Embrace connection to each the following tables.
   - endpoints
   - queries 
