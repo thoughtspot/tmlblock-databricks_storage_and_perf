@@ -9,8 +9,6 @@ The Databricks Storage and Performance SpotApp mimics the Databricks data model.
 
 This is a sample Liveboard, created after you deploy the Databricks Storage and Performance SpotApp:
 
-![Databricks SpotApp Liveboard](Image_URL)
-
 Use the Databricks Storage and Performance SpotApp to manage costs and investigate query performance. Track how and where your users consume Databricks Units (DBUs), and investigate latency issues with database queries. You can also review your tables' Z-Ordering.
 
 ## Prerequisites
