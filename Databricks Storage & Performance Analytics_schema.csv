@@ -1,0 +1,33 @@
+SpotApp table;SpotApp columns;SpotApp column datatype;SpotApp column description;SpotApp mandatory column
+billing;clusterId;VARCHAR;ID of the cluster.	;No
+billing;clusterName;VARCHAR;User-provided name for the cluster.;No
+billing;clusterNodeType;VARCHAR;Instance type of the cluster.;No
+billing;clusterOwnerUserId;INT64;ID of the user who created the cluster.;No
+billing;dbus;DOUBLE;Number of DBUs used by the user during this hour.;No
+billing;machineHours;DOUBLE;Total number of machine hours used by all containers in the cluster.;No
+billing;sku;VARCHAR;Billing SKU. See the Billing SKUs table for a list of values.;No
+billing;timestamp;DATE_TIME;End of the hour for the provided usage.;No
+billing;workspaceId;INT64;ID of the workspace.;No
+endpoints;id;VARCHAR;This column is required to join the cdw tables;No
+endpoints;name;VARCHAR;Name of the SQL endpoint. Must be unique. This field is required.;No
+queries;endpoint_id;VARCHAR;This column is required to join the cdw tables;No
+queries;error_message;VARCHAR;Message describing why the query could not complete.;No
+queries;metrics.compilation_time_ms;DOUBLE;ime spent loading metadata and optimizing the query (in seconds).;No
+queries;metrics.execution_time_ms;DOUBLE;Time spent executing the query (in seconds).;No
+queries;metrics.read_cache_bytes;INT64;Size of persistent data read from the cache, expressed in bytes.;No
+queries;metrics.read_files_count;INT64;Number of files read after pruning.;No
+queries;metrics.read_partitions_count;INT64;Number of partitions read after pruning.;No
+queries;metrics.read_remote_bytes;INT64;Size of persistent data read from cloud object storage on your cloud tenant, expressed in bytes .;No
+queries;metrics.result_fetch_time_ms;INT64;Time spent fetching the query results after the execution finished (in seconds).;No
+queries;metrics.result_from_cache;BOOL;Indicator if the query leveraged cache;No
+queries;metrics.rows_produced_count;INT64;Total number of rows returned by the query.;No
+queries;metrics.rows_read_count;INT64;Total number of rows read by the query.;No
+queries;metrics.spill_to_disk_bytes;INT64;Size of data temporarily written to disk while executing the query, expressed in bytes.;No
+queries;metrics.task_total_time_ms;INT64;Time of the execution time for all of the query’s tasks (in seconds).;No
+queries;metrics.total_time_ms;INT64;Total time (in seconds).;No
+queries;metrics.write_remote_bytes;INT64;Size pf persistent data written to cloud object storage in your cloud tenant, expressed in bytes.;No
+queries;query_id;VARCHAR;ID of the individual query;No
+queries;query_start_time;DATE_TIME;The time the query started.;No
+queries;query_text;VARCHAR;This is to map the column query_text;No
+queries;status;VARCHAR;Statuses of queries.;No
+queries;user_name;VARCHAR;Email address of the user that ran the query.;No
