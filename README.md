@@ -1,104 +1,48 @@
 
-# TML Blocks - Databricks Storage & Performance Analytics
+# Databricks Storage and Performance SpotApp
 
-The Databricks SpotApp is focused on surfacing information for billing consumption and SQL Endpoint query performance. The SpotApp consists of a number of pinboards and a workbook.
+The Databricks SpotApp is focused on surfacing information for billing consumption and SQL Endpoint query performance. The SpotApp includes a number of pinboards and a workbook.
 
-# Artifacts
+SpotApps are ThoughtSpot’s out-of-the-box solution templates built for specific use cases and data sources. They utilize ThoughtSpot Modeling Language (TML) Blocks, which are pre-built pieces of code that are easy to download and implement directly from the product.
 
-## Python Script 
-Python Script(SpotApp_Databricks_Python_API_Fetch.zip) to query the query the identified endpoint APIs and create the delta tables. 
+The Databricks Storage and Performance SpotApp mimics the Databricks data model. When deployed, it creates several Worksheets, Answers, and Liveboards based on your Databricks data in your cloud data warehouse.
 
-## Worksheets
-- Usage History Databricks 
-- Query History Databricks  
+This is a sample Liveboard, created after you deploy the Databricks Storage and Performance SpotApp:
 
-worksheet formulas: 
-- Usage History Databricks include a number of constants that define the price of each DBU based upon the compute category. These are prefixed with       ‘Price’.
-- Query History Databricks includes a number of formulas to define if a query is identified as a ThoughtSpot index query. These are prefexed with ‘Flag     TS’.
+![Databricks SpotApp Liveboard](Image_URL)
 
-## Liveboards 
-- Databricks Query Performance 
-- Databricks Query Volume
-- Databricks Billing Consumption 
+Use the Databricks Storage and Performance SpotApp to manage costs and investigate query performance. Track how and where your users consume Databricks Units (DBUs), and investigate latency issues with database queries. You can also review your tables' Z-Ordering.
 
-# Installation Instructions
- 
-Prior to setting up the SpotApp a data pipeline must create the tables that will be referenced via Embrace. This pipeline could be established within the Databricks platform via a workspace and scheduled job as part of the Data Science & Engineering platform. Alternatively, 3rd party tools can be leveraged to complete this. The key activities are to:
--  	extract the data from the identified APIs
--  	create delta tables that will be referenced through Embrace
--  	establish a job to refresh the data
+## Prerequisites
 
-## Databricks Workspace Archive
+Before you can deploy the Databricks Storage and Performance SpotApp, you must complete the following prerequisites:
 
-An example Databricks workspace archive is available as a reference (SpotApp_Databricks_Python_API_Fetch). This includes example python code to query the identified endpoint APIs and create the delta tables. Within the Data Science and Engineering platform this workspace can be scheduled as a reoccurring job. 
+- **Review Required Data**: Examine the required tables and columns for the SpotApp.
+- **Ensure Column Compatibility**: Make sure that your columns match the required column type listed in the schema for your SpotApp.
+- **Obtain Credentials**: Acquire credentials and SYSADMIN privileges to connect to Databricks. The cloud data warehouse must contain the data ThoughtSpot will use to create Answers, Liveboards, and Worksheets. Refer to the connection reference for Databricks for information about required credentials.
+- **Unique Connection Name**: Ensure that the connection name for each new SpotApp is unique.
+- **Administrator Access to Databricks**: Maintain administrator access to manage Databricks resources.
+- **Access to Databricks Tables**: Ensure access to the following Databricks tables in your cloud data warehouse:
+  - `ENDPOINTS`
+  - `QUERIES`
+  - `BILLING`
 
-Within the constraints section in the example python code, a number of constants must be set. **Search for the string UPDATE to identify these.**
+### Run Python Script
 
-If you want to run this notebook yourself, you need to create a [Databricks personal access token](https://docs.databricks.com/sql/user/security/personal-access-tokens.html.) Store the access token using our secrets API, and pass it in through the Spark config, such as this: spark.pat_token {{secrets/query_history_etl/user}}, or Azure Keyvault.
+Execute the following Python script on your Databricks instance to load the Databricks data into tables. Modify any parts of the script that require updates, such as the hostid, accountid, and authorization token.
 
-## API Authentication 
-These APIs require authentication. At the time of writing, billing API required basic authentication whereas the query history API used personal access tokens.
- 
-(https://docs.databricks.com/dev-tools/api/latest/authentication.html) <br>
-(https://docs.databricks.com/sql/user/security/personal-access-tokens.html)
+Python code can be found here: Databricks_PythonScript.py
 
-### Billing Usage Download API
+## Deploy the SpotApp
 
-https://docs.databricks.com/administration-guide/account-settings/billable-usage-download-api.html
+After you have downloaded the Zip file and verified its contents, follow these steps:
 
-***Requirements***
-- Email address and password for an account owner (or account admin, if you are on an E2 account) to authenticate with the APIs. The email address and password are both case sensitive.
-- Account ID. For accounts on the E2 version of the platform, get your account ID from the user profile drop-down in the account console. For non-E2 accounts, get your account ID from the account console’s Usage Overview tab. Contact your Databricks representative if you cannot find your account ID.
+1. Log into your ThoughtSpot instance and create an Embrace connection to all of the relevant views.
+2. Import the TML for the worksheets and verify that it has all been imported without any errors.
+3. Import the TML for the pinboard and verify that it has all been imported without any errors.
+4. You are ready to start searching your Databricks data!
 
-**Parameters**
-Refer to the following link for path and query parameters.
-https://docs.databricks.com/dev-tools/api/latest/account.html#operation/download-billable-usage
-
-### Query History API
-List the history of queries through SQL endpoints. You can filter by user ID, endpoint ID, status, and time range.
- 
-https://docs.databricks.com/sql/api/query-history.html
- 
-***Requirements***
-Authentication is required to access this rest API.
- 
-Example URL Path
-https://HOSTID.cloud.databricks.com/api/2.0/sql/history/queries?include_metrics=true
- 
-### SQL Endpoints APIs
-This URL provides the name of each endpoint.
- 
-https://docs.databricks.com/sql/api/sql-endpoints.html
- 
-***Requirements***
-·   	Authentication is required to access this rest API.
-Example URL Path
-https://HOSTID.cloud.databricks.com/api/2.0/sql/endpoints
- 
- 
- 
-
-
-
-## Connect with Thoughtspot and Import TML
-- Log into your ThoughtSpot instance and create an Embrace connection to each the following tables.
-  - endpoints
-  - queries 
-  - billing
- 
-- Combine all worksheet TML files into a ZIP file: 
-  - worksheet_Manifest.yaml
-  - Query History Databricks.worksheet.tml
-  - Usage History Databricks.worksheet.tml
-
-- Combine all worksheet TML files into a seperate ZIP file: 
-  - Pinboard_Manifest.yaml
-  - Databricks Billing Consumption.pinboard.tml
-  - Databricks Query Performance.pinboard.tml
-  - Databricks Query Volume.pinboard.tml
- 
-- Import the zipped file containing TML for the worksheets and verify that it has all been imported without any errors.
-- Import the zipped file for the liveboards and verify that it has all been imported without any errors.
+For detailed instructions on how to import TML files, refer to the [ThoughtSpot documentation](https://docs.thoughtspot.com/software/latest/tml-import-export-multiple).
 
 # Liveboard Screenshots 
 
